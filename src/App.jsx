@@ -5,7 +5,7 @@ function App() {
   return (
     <div>
       <Navbar />
-      <ItemListContainer greetings="Bienvenido a la Fika..." />
+      <ItemListContainer />
     </div>
   );
 }
