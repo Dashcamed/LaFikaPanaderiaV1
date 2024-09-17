@@ -8,7 +8,7 @@ const ProductCard = ({
   contiene,
 }) => {
   return (
-    <div className="card card-compact bg-base-100 sm:w-96 w-auto shadow-xl">
+    <div className="card card-compact bg-base-100 sm:w-96 md:w-80 shadow-xl">
       <figure>
         <img src={image} alt={title} />
       </figure>

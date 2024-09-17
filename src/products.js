@@ -38,7 +38,7 @@ export const products = [
   {
     id: "4",
     title: "Focaccia",
-    price: 10,
+    price: 2500,
     stock: 10,
     description:
       "Auténtica focaccia italiana, esponjosa y aromática, perfecta para acompañar cualquier comida.",
