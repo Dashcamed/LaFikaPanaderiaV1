@@ -1,10 +1,10 @@
 import React from "react";
+import ItemDetailCard from "../../common/itemDetailCard.jsx/ItemDetailCard";
 
 const ItemDetail = ({ item }) => {
-  console.log(item);
   return (
-    <div>
-      <h1>{item.title}</h1>
+    <div className="h-fit my-5 mx-2">
+      <ItemDetailCard item={item} />
     </div>
   );
 };

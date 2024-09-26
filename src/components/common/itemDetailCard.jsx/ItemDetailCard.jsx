@@ -1,0 +1,33 @@
+import React from "react";
+import CounterContainer from "../counter/CounterContainer";
+
+const ItemDetailCard = ({ item }) => {
+  return (
+    <div className="card card-compact lg:card-side bg-base-100 shadow-xl">
+      <div>
+        <button className="btn btn-warning absolute right-px">Cerrar</button>
+      </div>
+      <figure>
+        <img src={item.imageUrl} alt={item.title} className="rounded-lg " />
+      </figure>
+      <div className="card-body">
+        <h2 className="card-title text-2xl lg:text-4xl">{item.title}</h2>
+        <p className="font-extrabold lg:text-3xl">${item.price}</p>
+        <p className="font-semibold lg:text-3xl">Stock: {item.stock}</p>
+        <p className="lg:text-xl">{item.description}</p>
+        <p className="text-xs lg:text-md font-bold">{item.contiene}</p>
+        <div className="badge badge-outline capitalize mb-2">
+          Categoría: {item.category}
+        </div>
+        <div className="card-actions justify-between items-center">
+          <div>
+            <CounterContainer />
+          </div>
+          <button className="btn btn-primary px-8">Agregar al carrito</button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ItemDetailCard;

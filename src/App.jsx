@@ -1,3 +1,4 @@
+import Footer from "./components/layouts/footer/Footer";
 import Navbar from "./components/layouts/navbar/Navbar";
 import ItemDetailContainer from "./components/pages/itemDetail/ItemDetailContainer";
 import ItemListContainer from "./components/pages/itemListComponents/itemListContainer";
