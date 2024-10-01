@@ -1,11 +1,14 @@
 import React from "react";
 import CounterContainer from "../counter/CounterContainer";
+import { Link } from "react-router-dom";
 
 const ItemDetailCard = ({ item }) => {
   return (
     <div className="card card-compact lg:card-side bg-base-100 shadow-xl">
       <div>
-        <button className="btn btn-warning absolute right-px">Cerrar</button>
+        <Link to={"/"} className="btn btn-warning absolute right-px">
+          Cerrar
+        </Link>
       </div>
       <figure>
         <img src={item.imageUrl} alt={item.title} className="rounded-lg " />
