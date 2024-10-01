@@ -6,7 +6,10 @@ const ItemDetailCard = ({ item }) => {
   return (
     <div className="card card-compact lg:card-side bg-base-100 shadow-xl">
       <div>
-        <Link to={"/"} className="btn btn-warning absolute right-px">
+        <Link
+          to={`/Category/${item.category}`}
+          className="btn btn-warning absolute right-px"
+        >
           Cerrar
         </Link>
       </div>

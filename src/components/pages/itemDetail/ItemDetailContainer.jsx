@@ -18,7 +18,6 @@ const ItemDetailContainer = () => {
   return (
     <>
       <ItemDetail item={item} />
-      <Footer />
     </>
   );
 };

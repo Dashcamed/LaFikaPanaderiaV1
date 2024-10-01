@@ -4,7 +4,7 @@ import ItemDetailCard from "../../common/itemDetailCard.jsx/ItemDetailCard";
 const ItemDetail = ({ item }) => {
   return (
     <div className="h-fit my-5 mx-2">
-      <ItemDetailCard item={item} />
+      <ItemDetailCard item={item} {...item} />
     </div>
   );
 };
