@@ -1,7 +1,8 @@
 import CartWidget from "../../common/cartWidget/CartWidget";
 import logo from "../../../../public/logoPanaderia.svg";
 import ThemeController from "../../common/themeController/ThemeController";
-import Button from "../../common/button/Button";
+import { Link } from "react-router-dom";
+import { categories } from "./categories.js";
 
 const Navbar = () => {
   return (
@@ -31,28 +32,20 @@ const Navbar = () => {
             <details className="font-bold">
               <summary>Menú</summary>
               <ul className="p-2">
-                <li>
-                  <Button categoria="Panaderia" />
-                </li>
-                <li>
-                  <Button categoria="Pasteleria" />
-                </li>
-                <li>
-                  <Button categoria="Bolleria" />
-                </li>
-                <li>
-                  <Button categoria="Cafeteria" />
-                </li>
-                <li>
-                  <Button categoria="Mermeladas" />
-                </li>
+                {categories.map(({ title, path }) => (
+                  <li key={title}>
+                    <Link key={title} to={path} className="btn btn-ghost p-0">
+                      {title}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </details>
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl p-0">
+        <Link to="/" className="btn btn-ghost text-xl p-0">
           <img src={logo} alt="" className="w-16" />
-        </a>
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex z-10">
         <ul className="menu menu-horizontal px-1 ">
@@ -60,21 +53,13 @@ const Navbar = () => {
             <details className="font-bold">
               <summary>Menú</summary>
               <ul className="p-2">
-                <li>
-                  <Button categoria="Panaderia" />
-                </li>
-                <li>
-                  <Button categoria="Pasteleria" />
-                </li>
-                <li>
-                  <Button categoria="Bolleria" />
-                </li>
-                <li>
-                  <Button categoria="Cafeteria" />
-                </li>
-                <li>
-                  <Button categoria="Mermeladas" />
-                </li>
+                {categories.map(({ title, path }) => (
+                  <li key={title}>
+                    <Link key={title} to={path} className="btn btn-ghost p-0">
+                      {title}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </details>
           </li>
@@ -82,7 +67,9 @@ const Navbar = () => {
       </div>
       <div className="navbar-end">
         <ThemeController />
-        <CartWidget />
+        <Link to="/Cart">
+          <CartWidget />
+        </Link>
       </div>
     </div>
   );
