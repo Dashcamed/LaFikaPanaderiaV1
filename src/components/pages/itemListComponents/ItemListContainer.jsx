@@ -12,8 +12,6 @@ const ItemListContainer = () => {
   // va a ser falsy cuando este en home ---> todos los productos
   // va a ser truthy cuando estemos en una categoria ---> parte de los productos
 
-  console.log(items);
-
   useEffect(() => {
     const filteredProducts = products.filter(
       (product) => product.category === categoryName

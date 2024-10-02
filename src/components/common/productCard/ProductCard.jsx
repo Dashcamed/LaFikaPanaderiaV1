@@ -1,14 +1,6 @@
 import { Link } from "react-router-dom";
 
-const ProductCard = ({
-  id,
-  title,
-  price,
-  stock,
-  imageUrl,
-  category,
-  contiene,
-}) => {
+const ProductCard = ({ id, title, price, stock, imageUrl, category }) => {
   return (
     <div className="card card-compact bg-base-100 sm:w-96 md:w-80 shadow-xl">
       <figure>
@@ -16,9 +8,8 @@ const ProductCard = ({
       </figure>
       <div className="card-body">
         <h2 className="card-title text-xl xl:text-2xl">{title}</h2>
-        <p className="font-extrabold">${price}</p>
+        <p className="font-bold xl:text-xl">${price} CLP</p>
         <p className="font-semibold">Stock: {stock}</p>
-        <p className="text-xs font-bold">{contiene}</p>
         <div className="card-actions justify-between">
           <div className="badge badge-outline capitalize">{category}</div>
           <Link to={`/ProductDetail/${id}`}>
