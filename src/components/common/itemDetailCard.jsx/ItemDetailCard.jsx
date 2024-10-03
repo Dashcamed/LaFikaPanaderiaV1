@@ -2,7 +2,7 @@ import React from "react";
 import CounterContainer from "../counter/CounterContainer";
 import { Link } from "react-router-dom";
 
-const ItemDetailCard = ({ item }) => {
+const ItemDetailCard = ({ item, addOn }) => {
   return (
     <div className="card card-compact lg:card-side bg-base-100 shadow-xl">
       <div>
@@ -27,9 +27,8 @@ const ItemDetailCard = ({ item }) => {
         </div>
         <div className="card-actions justify-between items-center">
           <div>
-            <CounterContainer />
+            <CounterContainer addOn={addOn} />
           </div>
-          <button className="btn btn-primary px-8">Agregar al carrito</button>
         </div>
       </div>
     </div>
