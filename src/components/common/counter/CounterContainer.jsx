@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Counter from "./Counter";
 
-const CounterContainer = () => {
+const CounterContainer = ({ addOn }) => {
   const [contador, setContador] = useState(1);
 
   const sumar = () => {
@@ -16,6 +16,7 @@ const CounterContainer = () => {
     contador,
     sumar,
     restar,
+    addOn,
   };
 
   return <Counter {...childProps} />;
