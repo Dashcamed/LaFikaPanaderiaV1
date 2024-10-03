@@ -70,6 +70,9 @@ const Navbar = () => {
         <Link to="/Cart">
           <CartWidget />
         </Link>
+        <Link to="/Eventos">
+          <button className="btn btn-primary">Eventos</button>
+        </Link>
       </div>
     </div>
   );
