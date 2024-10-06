@@ -16,6 +16,7 @@ const ItemListContainer = () => {
     const filteredProducts = products.filter(
       (product) => product.category === categoryName
     );
+
     const getProducts = new Promise((res, rej) => {
       let isLoged = true;
       if (isLoged) {
@@ -33,7 +34,6 @@ const ItemListContainer = () => {
         console.log("entro en el catch", error);
       });
   }, [categoryName]);
-  //crear una promesa
   return <ItemList items={items} />;
 };
 

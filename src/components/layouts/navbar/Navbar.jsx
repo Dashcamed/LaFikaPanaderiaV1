@@ -1,5 +1,5 @@
 import CartWidget from "../../common/cartWidget/CartWidget";
-import logo from "../../../../public/logoPanaderia.svg";
+import logo from "/logoPanaderia.svg";
 import ThemeController from "../../common/themeController/ThemeController";
 import { Link } from "react-router-dom";
 import { categories } from "./categories.js";

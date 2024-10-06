@@ -1,8 +1,8 @@
 import React from "react";
-import logo from "../../../../public/logoPanaderia.svg";
-import instagram from "../../../../public/logoInstagram.svg";
-import whatsapp from "../../../../public/logoWhatsapp.svg";
-import googleMaps from "../../../../public/logoGoogleMaps.svg";
+import logo from "/logoPanaderia.svg";
+import instagram from "/logoInstagram.svg";
+import whatsapp from "/logoWhatsapp.svg";
+import googleMaps from "/logoGoogleMaps.svg";
 
 const Footer = () => {
   return (
