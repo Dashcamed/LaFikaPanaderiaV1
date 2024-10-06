@@ -1,18 +1,21 @@
 import CartWidget from "../../common/cartWidget/CartWidget";
-import logo from "../../../../public/logoPanaderia.svg";
+import logoLight from "/logoPanaderia.svg";
+import logoDark from "/logoPanaderiaSecondary.svg";
 import ThemeController from "../../common/themeController/ThemeController";
 import { Link } from "react-router-dom";
 import { categories } from "./categories.js";
 
-const Navbar = () => {
+const Navbar = ({ isDarkMode, onThemeToggle }) => {
+  const logo = isDarkMode ? logoDark : logoLight;
+
   return (
-    <div className="navbar bg-base-200" data-theme="coffee">
+    <div className="navbar bg-base-200">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
+              className="h-8 w-8"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -52,7 +55,7 @@ const Navbar = () => {
           <li>
             <details className="font-bold">
               <summary className="text-base">Menú</summary>
-              <ul className="p-2">
+              <ul className="p-2 bg-base-200">
                 {categories.map(({ title, path }) => (
                   <li key={title}>
                     <Link key={title} to={path} className="btn btn-ghost p-0">
@@ -66,7 +69,10 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <ThemeController />
+        <ThemeController
+          isDarkMode={isDarkMode}
+          onThemeToggle={onThemeToggle}
+        />
         <Link to="/Cart">
           <CartWidget />
         </Link>

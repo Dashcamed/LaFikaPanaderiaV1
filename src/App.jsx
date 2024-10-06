@@ -5,11 +5,34 @@ import CartContainer from "./components/pages/cart/CartContainer";
 import ItemDetailContainer from "./components/pages/itemDetail/ItemDetailContainer";
 import Page404 from "./components/pages/404/Page404";
 import Footer from "./components/layouts/footer/Footer";
+import React, { useState, useEffect } from "react";
 
 function App() {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect(() => {
+    const darkModeQuery = window.matchMedia("(prefers-color-scheme: dark)");
+
+    setIsDarkMode(darkModeQuery.matches);
+
+    const handleThemeChange = (e) => {
+      setIsDarkMode(e.matches);
+    };
+
+    darkModeQuery.addEventListener("change", handleThemeChange);
+
+    return () => {
+      darkModeQuery.removeEventListener("change", handleThemeChange);
+    };
+  }, []);
+
+  const toggleTheme = () => {
+    setIsDarkMode(!isDarkMode);
+  };
+
   return (
     <BrowserRouter>
-      <Navbar />
+      <Navbar isDarkMode={isDarkMode} onThemeToggle={toggleTheme} />
       <Routes>
         <Route path={"/"} element={<ItemListContainer />}></Route>
         <Route
