@@ -1,15 +1,29 @@
 import React, { useState } from "react";
 import Counter from "./Counter";
 
-const CounterContainer = ({ addOn }) => {
+const CounterContainer = ({ addOn, stock }) => {
   const [contador, setContador] = useState(1);
+  const [disabledSumar, setDisabledSumar] = useState(false);
+  const [disabledRestar, setDisabledRestar] = useState(true);
 
   const sumar = () => {
-    setContador(contador + 1);
+    if (contador < stock) {
+      setContador(contador + 1);
+      setDisabledRestar(false);
+    }
+    if (contador + 1 === stock) {
+      setDisabledSumar(true);
+    }
   };
 
   const restar = () => {
-    setContador(contador - 1);
+    if (contador > 1) {
+      setContador(contador - 1);
+      setDisabledSumar(false);
+    }
+    if (contador - 1 === 1) {
+      setDisabledRestar(true);
+    }
   };
 
   let childProps = {
@@ -17,6 +31,8 @@ const CounterContainer = ({ addOn }) => {
     sumar,
     restar,
     addOn,
+    disabledSumar,
+    disabledRestar,
   };
 
   return <Counter {...childProps} />;

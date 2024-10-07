@@ -27,7 +27,7 @@ const ItemDetailCard = ({ item, addOn }) => {
         </div>
         <div className="card-actions justify-between items-center">
           <div>
-            <CounterContainer addOn={addOn} />
+            <CounterContainer stock={item.stock} addOn={addOn} />
           </div>
         </div>
       </div>
