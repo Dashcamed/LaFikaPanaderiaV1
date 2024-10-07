@@ -15,10 +15,9 @@ const ItemDetailContainer = () => {
     }
   }, [id]);
 
-  const addOn = (cantidad) => {
-    console.log("agregado al carrito");
-    console.log(item);
-    console.log(cantidad);
+  const addOn = (quantity) => {
+    let productoParaELCarrito = { ...item, quantity };
+    console.log(productoParaELCarrito);
   };
   return (
     <>
