@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ItemDetail from "./ItemDetail";
 import { products } from "../../../products.js";
 import { useParams } from "react-router-dom";
+import { CartContext } from "../../../context/CartContext.jsx";
 
 const ItemDetailContainer = () => {
   const [item, setItem] = useState({});
+  const { addToCart, cart } = useContext(CartContext);
+
+  console.log("carrito", cart);
 
   const { id } = useParams(); // devuelve un objeto
 
@@ -17,7 +21,7 @@ const ItemDetailContainer = () => {
 
   const addOn = (quantity) => {
     let productoParaELCarrito = { ...item, quantity };
-    console.log(productoParaELCarrito);
+    addToCart(productoParaELCarrito);
   };
   return (
     <>

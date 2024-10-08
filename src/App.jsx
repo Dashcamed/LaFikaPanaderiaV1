@@ -6,6 +6,7 @@ import ItemDetailContainer from "./components/pages/itemDetail/ItemDetailContain
 import Page404 from "./components/pages/404/Page404";
 import Footer from "./components/layouts/footer/Footer";
 import React, { useState, useEffect } from "react";
+import { CartContextProvider } from "./context/CartContext";
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -32,24 +33,26 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Navbar isDarkMode={isDarkMode} onThemeToggle={toggleTheme} />
-      <Routes>
-        <Route path={"/"} element={<ItemListContainer />}></Route>
-        <Route
-          path={"/Category/:categoryName"}
-          element={<ItemListContainer />}
-        ></Route>
+      <CartContextProvider>
+        <Navbar isDarkMode={isDarkMode} onThemeToggle={toggleTheme} />
+        <Routes>
+          <Route path={"/"} element={<ItemListContainer />}></Route>
+          <Route
+            path={"/Category/:categoryName"}
+            element={<ItemListContainer />}
+          ></Route>
 
-        <Route
-          path={"/ProductDetail/:id"}
-          element={<ItemDetailContainer />}
-        ></Route>
+          <Route
+            path={"/ProductDetail/:id"}
+            element={<ItemDetailContainer />}
+          ></Route>
 
-        <Route path={"/Cart"} element={<CartContainer />}></Route>
+          <Route path={"/Cart"} element={<CartContainer />}></Route>
 
-        <Route path={"*"} element={<Page404 />}></Route>
-      </Routes>
-      <Footer />
+          <Route path={"*"} element={<Page404 />}></Route>
+        </Routes>
+        <Footer />
+      </CartContextProvider>
     </BrowserRouter>
   );
 }
