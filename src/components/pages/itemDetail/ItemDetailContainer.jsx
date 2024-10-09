@@ -6,11 +6,13 @@ import { CartContext } from "../../../context/CartContext.jsx";
 
 const ItemDetailContainer = () => {
   const [item, setItem] = useState({});
-  const { addToCart, cart } = useContext(CartContext);
+  const { addToCart, cart, getTotalQuantityById } = useContext(CartContext);
 
   console.log("carrito", cart);
 
   const { id } = useParams(); // devuelve un objeto
+
+  let totalAdded = getTotalQuantityById(id);
 
   useEffect(() => {
     let product = products.find((product) => product.id === id);
@@ -25,7 +27,7 @@ const ItemDetailContainer = () => {
   };
   return (
     <>
-      <ItemDetail item={item} addOn={addOn} />
+      <ItemDetail item={item} addOn={addOn} totalAdded={totalAdded} />
     </>
   );
 };

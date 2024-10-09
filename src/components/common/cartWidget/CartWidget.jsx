@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { CartContext } from "../../../context/CartContext";
 
 const CartWidget = () => {
-  const { cart, getTotalQuantity } = useContext(CartContext);
+  const { getTotalQuantity } = useContext(CartContext);
   let totalQuantity = getTotalQuantity();
   return (
     <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
