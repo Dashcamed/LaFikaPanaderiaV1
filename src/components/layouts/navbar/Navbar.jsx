@@ -1,13 +1,12 @@
 import CartWidget from "../../common/cartWidget/CartWidget";
-import logoLight from "/logoPanaderia.svg";
-import logoDark from "/logoPanaderiaSecondary.svg";
 import ThemeController from "../../common/themeController/ThemeController";
 import { Link } from "react-router-dom";
 import { categories } from "./categories.js";
+import { LogoContext } from "../../../context/logoContext.jsx";
+import { useContext } from "react";
 
-const Navbar = ({ isDarkMode, onThemeToggle }) => {
-  const logo = isDarkMode ? logoDark : logoLight;
-
+const Navbar = () => {
+  const { currentLogo } = useContext(LogoContext);
   return (
     <div className="navbar bg-base-200">
       <div className="navbar-start">
@@ -47,7 +46,7 @@ const Navbar = ({ isDarkMode, onThemeToggle }) => {
           </ul>
         </div>
         <Link to="/" className="btn btn-ghost text-xl p-0">
-          <img src={logo} alt="" className="w-16" />
+          <img src={currentLogo} alt="logo" className="w-16" />
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex z-10">
@@ -69,10 +68,7 @@ const Navbar = ({ isDarkMode, onThemeToggle }) => {
         </ul>
       </div>
       <div className="navbar-end">
-        <ThemeController
-          isDarkMode={isDarkMode}
-          onThemeToggle={onThemeToggle}
-        />
+        <ThemeController />
         <Link to="/Cart">
           <CartWidget />
         </Link>
