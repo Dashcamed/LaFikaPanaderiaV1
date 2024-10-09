@@ -9,7 +9,11 @@ const Cart = ({ cart, deleteProductById, totalQuantity, total, clearCart }) => {
               className="card card-side bg-base-300 mb-4 shadow-xl"
             >
               <figure>
-                <img src={product.imageUrl} alt={product.title} />
+                <img
+                  src={product.imageUrl}
+                  alt={product.title}
+                  className="h-48 lg:h-60"
+                />
               </figure>
               <div className="card-body">
                 <h2 className="card-title">{product.title}</h2>
