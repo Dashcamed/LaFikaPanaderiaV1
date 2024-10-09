@@ -5,53 +5,30 @@ import CartContainer from "./components/pages/cart/CartContainer";
 import ItemDetailContainer from "./components/pages/itemDetail/ItemDetailContainer";
 import Page404 from "./components/pages/404/Page404";
 import Footer from "./components/layouts/footer/Footer";
-import React, { useState, useEffect } from "react";
 import { CartContextProvider } from "./context/CartContext";
+import { LogoContextProvider } from "./context/logoContext";
 
 function App() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  useEffect(() => {
-    const darkModeQuery = window.matchMedia("(prefers-color-scheme:light)");
-
-    setIsDarkMode(darkModeQuery.matches);
-
-    const handleThemeChange = (e) => {
-      setIsDarkMode(e.matches);
-    };
-
-    darkModeQuery.addEventListener("change", handleThemeChange);
-
-    return () => {
-      darkModeQuery.removeEventListener("change", handleThemeChange);
-    };
-  }, []);
-
-  const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
-  };
-
   return (
     <BrowserRouter>
       <CartContextProvider>
-        <Navbar isDarkMode={isDarkMode} onThemeToggle={toggleTheme} />
-        <Routes>
-          <Route path={"/"} element={<ItemListContainer />}></Route>
-          <Route
-            path={"/Category/:categoryName"}
-            element={<ItemListContainer />}
-          ></Route>
-
-          <Route
-            path={"/ProductDetail/:id"}
-            element={<ItemDetailContainer />}
-          ></Route>
-
-          <Route path={"/Cart"} element={<CartContainer />}></Route>
-
-          <Route path={"*"} element={<Page404 />}></Route>
-        </Routes>
-        <Footer />
+        <LogoContextProvider>
+          <Navbar />
+          <Routes>
+            <Route path={"/"} element={<ItemListContainer />} />
+            <Route
+              path={"/Category/:categoryName"}
+              element={<ItemListContainer />}
+            />
+            <Route
+              path={"/ProductDetail/:id"}
+              element={<ItemDetailContainer />}
+            />
+            <Route path={"/Cart"} element={<CartContainer />} />
+            <Route path={"*"} element={<Page404 />} />
+          </Routes>
+          <Footer />
+        </LogoContextProvider>
       </CartContextProvider>
     </BrowserRouter>
   );

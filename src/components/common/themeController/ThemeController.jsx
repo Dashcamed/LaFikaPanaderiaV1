@@ -1,6 +1,13 @@
-import React from "react";
+import { useContext } from "react";
+import { LogoContext } from "../../../context/logoContext";
 
-const ThemeController = ({ isDarkMode, onThemeToggle }) => {
+const ThemeController = () => {
+  const { toggleLogo } = useContext(LogoContext);
+
+  const handleThemeChange = (event) => {
+    toggleLogo(event.target.checked);
+  };
+
   return (
     <label className="swap swap-rotate">
       {/* this hidden checkbox controls the state */}
@@ -8,8 +15,7 @@ const ThemeController = ({ isDarkMode, onThemeToggle }) => {
         type="checkbox"
         className="theme-controller"
         value="retro"
-        checked={isDarkMode}
-        onChange={onThemeToggle}
+        onChange={handleThemeChange}
       />
       {/* sun icon */}
       <svg
