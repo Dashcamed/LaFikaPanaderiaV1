@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Counter from "./Counter";
 
-const CounterContainer = ({ addOn, stock }) => {
-  const [contador, setContador] = useState(1);
+const CounterContainer = ({ addOn, stock, totalAdded }) => {
+  const [contador, setContador] = useState(totalAdded);
   const [disabledSumar, setDisabledSumar] = useState(false);
   const [disabledRestar, setDisabledRestar] = useState(true);
 

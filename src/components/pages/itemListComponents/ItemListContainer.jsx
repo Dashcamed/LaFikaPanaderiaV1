@@ -27,7 +27,9 @@ const ItemListContainer = () => {
 
     getProducts
       .then((response) => {
-        setItems(response);
+        setTimeout(() => {
+          setItems(response);
+        }, 500);
       })
       .catch((error) => {
         console.log("entro en el catch", error);

@@ -2,7 +2,7 @@ import React from "react";
 import CounterContainer from "../counter/CounterContainer";
 import { Link } from "react-router-dom";
 
-const ItemDetailCard = ({ item, addOn }) => {
+const ItemDetailCard = ({ item, addOn, totalAdded }) => {
   return (
     <div className="flex flex-row justify-center">
       <div className="card card-compact lg:card-side lg:w-full xl:w-5/6 bg-base-100 shadow-xl">
@@ -31,7 +31,7 @@ const ItemDetailCard = ({ item, addOn }) => {
           <img
             src={item.imageUrl}
             alt={item.title}
-            className="rounded-lg h- lg:h-96  "
+            className="rounded-lg h-80 lg:h-96  "
           />
         </figure>
         <div className="card-body">
@@ -45,7 +45,11 @@ const ItemDetailCard = ({ item, addOn }) => {
           </div>
           <div className="card-actions justify-between items-center">
             <div>
-              <CounterContainer stock={item.stock} addOn={addOn} />
+              <CounterContainer
+                stock={item.stock}
+                addOn={addOn}
+                totalAdded={totalAdded}
+              />
             </div>
           </div>
         </div>
