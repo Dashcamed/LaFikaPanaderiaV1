@@ -11,8 +11,8 @@ import { LogoContextProvider } from "./context/logoContext";
 function App() {
   return (
     <BrowserRouter>
-      <CartContextProvider>
-        <LogoContextProvider>
+      <LogoContextProvider>
+        <CartContextProvider>
           <Navbar />
           <Routes>
             <Route path={"/"} element={<ItemListContainer />} />
@@ -28,8 +28,8 @@ function App() {
             <Route path={"*"} element={<Page404 />} />
           </Routes>
           <Footer />
-        </LogoContextProvider>
-      </CartContextProvider>
+        </CartContextProvider>
+      </LogoContextProvider>
     </BrowserRouter>
   );
 }

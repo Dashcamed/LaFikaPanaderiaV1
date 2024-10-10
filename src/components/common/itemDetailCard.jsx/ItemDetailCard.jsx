@@ -31,7 +31,7 @@ const ItemDetailCard = ({ item, addOn, totalAdded }) => {
           <img
             src={item.imageUrl}
             alt={item.title}
-            className="rounded-lg h- lg:h-96  "
+            className="rounded-lg h-80 lg:h-96  "
           />
         </figure>
         <div className="card-body">
