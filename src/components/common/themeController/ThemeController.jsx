@@ -1,11 +1,12 @@
 import { useContext } from "react";
-import { LogoContext } from "../../../context/logoContext";
+import { LogoContext } from "../../../context/LogoContext";
 
 const ThemeController = () => {
-  const { toggleLogo } = useContext(LogoContext);
+  const { toggleLogo, toggleKannel } = useContext(LogoContext);
 
   const handleThemeChange = (event) => {
     toggleLogo(event.target.checked);
+    toggleKannel(event.target.checked);
   };
 
   return (

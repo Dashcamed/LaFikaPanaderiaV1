@@ -2,7 +2,7 @@ import CartWidget from "../../common/cartWidget/CartWidget";
 import ThemeController from "../../common/themeController/ThemeController";
 import { Link } from "react-router-dom";
 import { categories } from "./categories.js";
-import { LogoContext } from "../../../context/logoContext.jsx";
+import { LogoContext } from "../../../context/LogoContext.jsx";
 import { useContext } from "react";
 
 const Navbar = () => {
@@ -32,7 +32,7 @@ const Navbar = () => {
             className="menu menu-sm dropdown-content bg-base-200 rounded-box z-[1] mt-3 w-52 p-2 shadow"
           >
             <details className="font-bold">
-              <summary>Menú</summary>
+              <summary>Productos por categorias</summary>
               <ul className="p-2">
                 {categories.map(({ title, path }) => (
                   <li key={title}>
@@ -53,7 +53,7 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1 ">
           <li>
             <details className="font-bold">
-              <summary className="text-base">Menú</summary>
+              <summary className="text-base">Productos por categorias</summary>
               <ul className="p-2 bg-base-200">
                 {categories.map(({ title, path }) => (
                   <li key={title}>

@@ -6,13 +6,13 @@ import ItemDetailContainer from "./components/pages/itemDetail/ItemDetailContain
 import Page404 from "./components/pages/404/Page404";
 import Footer from "./components/layouts/footer/Footer";
 import { CartContextProvider } from "./context/CartContext";
-import { LogoContextProvider } from "./context/logoContext";
+import { LogoContextProvider } from "./context/LogoContext";
 
 function App() {
   return (
     <BrowserRouter>
-      <LogoContextProvider>
-        <CartContextProvider>
+      <CartContextProvider>
+        <LogoContextProvider>
           <Navbar />
           <Routes>
             <Route path={"/"} element={<ItemListContainer />} />
@@ -28,8 +28,8 @@ function App() {
             <Route path={"*"} element={<Page404 />} />
           </Routes>
           <Footer />
-        </CartContextProvider>
-      </LogoContextProvider>
+        </LogoContextProvider>
+      </CartContextProvider>
     </BrowserRouter>
   );
 }
