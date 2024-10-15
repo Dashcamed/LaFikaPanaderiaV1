@@ -8,7 +8,7 @@ export const LogoContext = createContext();
 
 export const LogoContextProvider = ({ children }) => {
   const [currentLogo, setCurrentLogo] = useState(logo);
-  const [currentKannel, setCurrentKannel] = useState(kannel);
+  const [currentKannel, setCurrentKannel] = useState(kannelSecondary);
 
   const toggleLogo = (isChecked) => {
     setCurrentLogo(isChecked ? logoSecondary : logo);

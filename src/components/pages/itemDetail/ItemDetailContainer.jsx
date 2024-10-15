@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import ItemDetail from "./ItemDetail";
-import { products } from "../../../products.js";
+import { collection, doc, getDoc } from "firebase/firestore";
 import { useParams } from "react-router-dom";
 import { CartContext } from "../../../context/CartContext.jsx";
+import { db } from "../../../configFirebase.js";
 
 const ItemDetailContainer = () => {
   const [item, setItem] = useState({});
@@ -15,10 +16,10 @@ const ItemDetailContainer = () => {
   let totalAdded = getTotalQuantityById(id);
 
   useEffect(() => {
-    let product = products.find((product) => product.id === id);
-    if (product) {
-      setItem(product);
-    }
+    let productCollection = collection(db, "producto");
+    let refDoc = doc(productCollection, id);
+    let getProduct = getDoc(refDoc);
+    getProduct.then((res) => setItem({ ...res.data(), id: res.id }));
   }, [id]);
 
   const addOn = (quantity) => {
