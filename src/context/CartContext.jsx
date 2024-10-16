@@ -1,9 +1,12 @@
 import { createContext, useState } from "react";
+import { useAlert } from "./AlertContext";
 
 export const CartContext = createContext();
 
 export const CartContextProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
+
+  const { showAlert } = useAlert();
 
   const addToCart = (product) => {
     // let exist = cart.find((element) => element.id === product.id)
@@ -21,12 +24,14 @@ export const CartContextProvider = ({ children }) => {
       setCart(newArray);
     } else {
       setCart([...cart, product]);
+      showAlert("Agregado al carrito", "success");
     }
   };
 
   const deleteProductById = (id) => {
     let filteredArray = cart.filter((product) => product.id !== id);
     setCart(filteredArray);
+    showAlert("Producto Eliminado", "error");
   };
 
   const getTotalAmount = () => {
@@ -44,6 +49,7 @@ export const CartContextProvider = ({ children }) => {
   };
 
   const clearCart = () => {
+    showAlert("Carrito Vacio", "warning");
     setCart([]);
   };
 

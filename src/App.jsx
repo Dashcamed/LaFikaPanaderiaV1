@@ -7,29 +7,32 @@ import Page404 from "./components/pages/404/Page404";
 import Footer from "./components/layouts/footer/Footer";
 import { CartContextProvider } from "./context/CartContext";
 import { LogoContextProvider } from "./context/LogoContext";
+import { AlertProvider } from "./context/AlertContext";
 
 function App() {
   return (
     <BrowserRouter>
-      <CartContextProvider>
-        <LogoContextProvider>
-          <Navbar />
-          <Routes>
-            <Route path={"/"} element={<ItemListContainer />} />
-            <Route
-              path={"/Category/:categoryName"}
-              element={<ItemListContainer />}
-            />
-            <Route
-              path={"/ProductDetail/:id"}
-              element={<ItemDetailContainer />}
-            />
-            <Route path={"/Cart"} element={<CartContainer />} />
-            <Route path={"*"} element={<Page404 />} />
-          </Routes>
-          <Footer />
-        </LogoContextProvider>
-      </CartContextProvider>
+      <AlertProvider>
+        <CartContextProvider>
+          <LogoContextProvider>
+            <Navbar />
+            <Routes>
+              <Route path={"/"} element={<ItemListContainer />} />
+              <Route
+                path={"/Category/:categoryName"}
+                element={<ItemListContainer />}
+              />
+              <Route
+                path={"/ProductDetail/:id"}
+                element={<ItemDetailContainer />}
+              />
+              <Route path={"/Cart"} element={<CartContainer />} />
+              <Route path={"*"} element={<Page404 />} />
+            </Routes>
+            <Footer />
+          </LogoContextProvider>
+        </CartContextProvider>
+      </AlertProvider>
     </BrowserRouter>
   );
 }
