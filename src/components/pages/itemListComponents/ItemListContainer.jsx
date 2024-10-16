@@ -11,7 +11,7 @@ const ItemListContainer = () => {
   const { categoryName } = useParams();
 
   useEffect(() => {
-    const itemsCollection = collection(db, "producto");
+    let itemsCollection = collection(db, "producto");
 
     let consulta = itemsCollection;
 
