@@ -69,7 +69,9 @@ const Cart = ({ cart, deleteProductById, totalQuantity, total, clearCart }) => {
               Acciones del carrito
             </h2>
             <div>
-              <button className="btn btn-success mr-4">Pagar</button>
+              <Link to={"/checkout"} className="btn btn-success mr-4">
+                Pagar
+              </Link>
               <button className="btn btn-warning mb-5" onClick={clearCart}>
                 Vaciar Carrito
               </button>

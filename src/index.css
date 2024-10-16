@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 .skeleton {
-    animation-duration: 0.75s;
+    animation-duration: 1s;
 }
