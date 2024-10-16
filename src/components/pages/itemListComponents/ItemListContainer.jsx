@@ -2,8 +2,9 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { ItemList } from "./ItemList";
 import { useParams } from "react-router-dom";
-import { collection, getDocs, query, where } from "firebase/firestore";
+import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../../../configFirebase";
+import { products } from "../../../products";
 
 const ItemListContainer = () => {
   const [items, setItems] = useState([]);
@@ -11,7 +12,7 @@ const ItemListContainer = () => {
   const { categoryName } = useParams();
 
   useEffect(() => {
-    let itemsCollection = collection(db, "producto");
+    let itemsCollection = collection(db, "products");
 
     let consulta = itemsCollection;
 
@@ -23,8 +24,21 @@ const ItemListContainer = () => {
       setItems(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
     });
   }, [categoryName]);
+
+  // const agregarProductos = () => {
+  //   products.forEach((product) => {
+  //     addDoc(collection(db, "products"), product);
+  //   });
+  // };
   //crear una promesa
-  return <ItemList items={items} />;
+  return (
+    <>
+      <ItemList items={items} />
+      {/* <button className="btn" onClick={agregarProductos}>
+        agregar productos
+      </button> */}
+    </>
+  );
 };
 
 export default ItemListContainer;

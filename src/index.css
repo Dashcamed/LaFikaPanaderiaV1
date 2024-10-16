@@ -3,9 +3,5 @@
 @tailwind utilities;
 
 .skeleton {
-<<<<<<< HEAD
     animation-duration: 1s;
-=======
-    animation-duration: 0.75s;
->>>>>>> origin/main
 }

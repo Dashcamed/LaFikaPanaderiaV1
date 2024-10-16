@@ -16,7 +16,7 @@ const ItemDetailContainer = () => {
   let totalAdded = getTotalQuantityById(id);
 
   useEffect(() => {
-    let productCollection = collection(db, "producto");
+    let productCollection = collection(db, "products");
     let refDoc = doc(productCollection, id);
     let getProduct = getDoc(refDoc);
     getProduct.then((res) => setItem({ ...res.data(), id: res.id }));

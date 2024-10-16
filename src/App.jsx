@@ -8,6 +8,7 @@ import Footer from "./components/layouts/footer/Footer";
 import { CartContextProvider } from "./context/CartContext";
 import { LogoContextProvider } from "./context/LogoContext";
 import { AlertProvider } from "./context/AlertContext";
+import Checkout from "./components/pages/checkout/checkout";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
               />
               <Route path={"/Cart"} element={<CartContainer />} />
               <Route path={"*"} element={<Page404 />} />
+              <Route path={"/checkout"} element={<Checkout />} />
             </Routes>
             <Footer />
           </LogoContextProvider>
