@@ -8,7 +8,7 @@ import Footer from "./components/layouts/footer/Footer";
 import { CartContextProvider } from "./context/CartContext";
 import { LogoContextProvider } from "./context/LogoContext";
 import { AlertProvider } from "./context/AlertContext";
-import Checkout from "./components/pages/checkout/checkout";
+import Checkout from "./components/pages/checkout/Checkout";
 
 function App() {
   return (
