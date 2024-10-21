@@ -45,7 +45,7 @@ const Alert = ({ visible, message, type }) => {
 
   return (
     visible && (
-      <div className="w-56 h-40 p-0 text-center fixed top-0 ">
+      <div className="toast toast-top toast-center z-10">
         <div className={`alert ${alertTypes[type]}`} role="alert">
           <svg
             xmlns="http://www.w3.org/2000/svg"
