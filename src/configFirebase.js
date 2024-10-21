@@ -2,12 +2,12 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBa192sS2Gv_xZx4UAOoqfXfSeTqsaYlLM",
-  authDomain: "lafikadb.firebaseapp.com",
-  projectId: "lafikadb",
-  storageBucket: "lafikadb.appspot.com",
-  messagingSenderId: "830670637365",
-  appId: "1:830670637365:web:7448be96e185d30d8de47c",
+  apiKey: import.meta.env.VITE_API_KEY,
+  authDomain: import.meta.env.VITE_AUTH,
+  projectId: import.meta.env.VITE_PROJECTID,
+  storageBucket: import.meta.env.VITE_STORAGE,
+  messagingSenderId: import.meta.env.VITE_MESSAGING,
+  appId: import.meta.env.VITE_APP_ID,
 };
 
 const app = initializeApp(firebaseConfig);
