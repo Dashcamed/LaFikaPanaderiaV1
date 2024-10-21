@@ -2,7 +2,7 @@ import React from "react";
 import instagram from "/logoInstagram.svg";
 import whatsapp from "/logoWhatsapp.svg";
 import googleMaps from "/logoGoogleMaps.svg";
-import { LogoContext } from "../../../context/logoContext";
+import { LogoContext } from "../../../context/LogoContext";
 import { useContext } from "react";
 
 const Footer = () => {
