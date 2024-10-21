@@ -9,8 +9,6 @@ const ItemDetailContainer = () => {
   const [item, setItem] = useState({});
   const { addToCart, cart, getTotalQuantityById } = useContext(CartContext);
 
-  console.log("carrito", cart);
-
   const { id } = useParams(); // devuelve un objeto
 
   let totalAdded = getTotalQuantityById(id);

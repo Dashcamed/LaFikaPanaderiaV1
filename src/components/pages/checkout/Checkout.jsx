@@ -54,34 +54,40 @@ const Checkout = () => {
   }
 
   return (
-    <div>
+    <div className="h-dvh">
       {orderId ? (
         <h1>Gracias por tu compra, tu orden es: {orderId}</h1>
       ) : (
-        <>
+        <div className="h-dvh">
           <h1>Proceso de compra</h1>
           <form onSubmit={handleSubmit}>
-            <input
-              type="text"
-              placeholder="Nombre"
-              onChange={handleChange}
-              name="name"
-            />
-            <input
-              type="number"
-              placeholder="Teléfono"
-              onChange={handleChange}
-              name="phone"
-            />
-            <input
-              type="email"
-              placeholder="Email"
-              onChange={handleChange}
-              name="email"
-            />
+            <label className="input input-bordered flex items-center gap-2">
+              <input
+                type="text"
+                placeholder="Nombre"
+                onChange={handleChange}
+                name="name"
+              />
+            </label>
+            <label className="input input-bordered flex items-center gap-2">
+              <input
+                type="text"
+                placeholder="Teléfono"
+                onChange={handleChange}
+                name="phone"
+              />
+            </label>
+            <label className="input input-bordered flex items-center gap-2">
+              <input
+                type="text"
+                placeholder="Email"
+                onChange={handleChange}
+                name="email"
+              />
+            </label>
             <button className="btn btn-primary">Comprar</button>
           </form>
-        </>
+        </div>
       )}
     </div>
   );
