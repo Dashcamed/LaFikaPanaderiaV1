@@ -22,6 +22,7 @@ export const CartContextProvider = ({ children }) => {
         }
       });
       setCart(newArray);
+      showAlert("Agregado al carrito", "success");
     } else {
       setCart([...cart, product]);
       showAlert("Agregado al carrito", "success");
