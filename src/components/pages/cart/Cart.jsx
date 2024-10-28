@@ -4,12 +4,34 @@ import { Link } from "react-router-dom";
 
 const Cart = ({ cart, deleteProductById, totalQuantity, total, clearCart }) => {
   const { currentKannel } = useContext(LogoContext);
+
   return (
-    <div className="flex flex-wrap-reverse mx-auto justify-evenly my-3">
-      {/* Sección principal con el listado de productos */}
-      <div className="w-80 h-dvh lg:h-dvh lg:w-1/2 xl:w-1/2 overflow-scroll align-middle">
-        {total > 0 ? (
-          <>
+    <div className="mx-auto my-3">
+      {total > 0 ? (
+        <div className="flex flex-col-reverse lg:flex-row lg:space-x-6 justify-evenly lg:items-start">
+          {/* Acciones del carrito */}
+          <div className="lg:order-last lg:w-1/2 my-4 lg:my-0 flex flex-col items-center">
+            <h2 className="lg:text-2xl font-semibold mb-3 text-center">
+              Acciones del carrito
+            </h2>
+            <div className="flex flex-col items-center">
+              <Link to="/checkout" className="btn btn-success mb-4">
+                Pagar
+              </Link>
+              <button className="btn btn-warning mb-5" onClick={clearCart}>
+                Vaciar Carrito
+              </button>
+            </div>
+            <h2 className="lg:text-2xl font-semibold mb-3 text-center">
+              Total de productos: {totalQuantity}
+            </h2>
+            <h2 className="lg:text-2xl font-semibold mb-3 text-center">
+              Total a pagar: ${total}
+            </h2>
+          </div>
+
+          {/* Listado de productos */}
+          <div className="w-80 lg:w-1/2 h-dvh overflow-auto mx-auto">
             <h2 className="lg:text-2xl font-semibold text-center mb-3">
               Listado de productos
             </h2>
@@ -47,49 +69,23 @@ const Cart = ({ cart, deleteProductById, totalQuantity, total, clearCart }) => {
                 </div>
               </div>
             ))}
-          </>
-        ) : (
-          // Cuando no hay productos en el carrito
-          <div className="text-center">
+          </div>
+        </div>
+      ) : (
+        // Cuando no hay productos en el carrito
+        <div className="flex h-dvh flex-col items-center text-center mx-auto">
+          <div>
             <Link to="/" className="btn btn-link">
               <img src={currentKannel} alt="logo Kannel" className="h-96" />
             </Link>
+          </div>
+          <div>
             <h2 className="lg:text-2xl font-semibold mb-3">
               Toca a Kannel para buscar productos
             </h2>
           </div>
-        )}
-      </div>
-
-      {/* Sección de acciones del carrito */}
-      <div className="my-4 justify-self-center">
-        {total > 0 && (
-          <>
-            <h2 className="lg:text-2xl font-semibold mb-3 text-center">
-              Acciones del carrito
-            </h2>
-            <div>
-              <Link to={"/checkout"} className="btn btn-success mr-4">
-                Pagar
-              </Link>
-              <button className="btn btn-warning mb-5" onClick={clearCart}>
-                Vaciar Carrito
-              </button>
-            </div>
-            <h2 className="lg:text-2xl font-semibold mb-3 text-center">
-              Total de productos: {totalQuantity}
-            </h2>
-            <h2 className="lg:text-2xl font-semibold mb-3 text-center">
-              Total a pagar: $ {total}
-            </h2>
-          </>
-        )}
-        {total === 0 && (
-          <h2 className="lg:text-2xl font-semibold mb-3 text-center">
-            No tienes productos
-          </h2>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 };

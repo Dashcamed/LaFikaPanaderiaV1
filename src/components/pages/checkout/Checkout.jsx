@@ -58,35 +58,41 @@ const Checkout = () => {
       {orderId ? (
         <h1>Gracias por tu compra, tu orden es: {orderId}</h1>
       ) : (
-        <div className="h-dvh">
-          <h1>Proceso de compra</h1>
-          <form onSubmit={handleSubmit}>
-            <label className="input input-bordered flex items-center gap-2">
-              <input
-                type="text"
-                placeholder="Nombre"
-                onChange={handleChange}
-                name="name"
-              />
-            </label>
-            <label className="input input-bordered flex items-center gap-2">
-              <input
-                type="text"
-                placeholder="Teléfono"
-                onChange={handleChange}
-                name="phone"
-              />
-            </label>
-            <label className="input input-bordered flex items-center gap-2">
-              <input
-                type="text"
-                placeholder="Email"
-                onChange={handleChange}
-                name="email"
-              />
-            </label>
-            <button className="btn btn-primary">Comprar</button>
-          </form>
+        <div className="h-fit my-4 flex justify-center">
+          <div className="card bg-base-100 w-96 shadow-xl p-2 mx-1">
+            <div className="card-title">
+              <h1>Proceso de compra</h1>
+            </div>
+            <form onSubmit={handleSubmit}>
+              <label className="input input-bordered flex items-center gap-2 my-1">
+                <input
+                  type="text"
+                  placeholder="Nombre"
+                  onChange={handleChange}
+                  name="name"
+                />
+              </label>
+              <label className="input input-bordered flex items-center gap-2 my-1">
+                <input
+                  type="text"
+                  placeholder="Teléfono"
+                  onChange={handleChange}
+                  name="phone"
+                />
+              </label>
+              <label className="input input-bordered flex items-center gap-2 my-1">
+                <input
+                  type="text"
+                  placeholder="Email"
+                  onChange={handleChange}
+                  name="email"
+                />
+              </label>
+              <div className="card-actions justify-end">
+                <button className="btn btn-primary">Comprar</button>
+              </div>
+            </form>
+          </div>
         </div>
       )}
     </div>

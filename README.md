@@ -1,8 +1,22 @@
-# React + Vite
+# Proyecto Final de React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+E-commerce app para la panaderia La Fika en Santiago de Chile. 
 
-Currently, two official plugins are available:
+Version de node para levantar el proyecto:
+v20.12.1
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Bibliotecas usadas en el desarrollo
+
+🌊 [TailwindCSS](https://tailwindcss.com/ "TailwindCSS")
+
+🌼 [DaisyUi](https://daisyui.com/ "daisyui")
+
+🧪 [React](https://es.react.dev/ "React")
+
+## Compilador
+
+⚡[Vite](https://vite.dev/ "Vite")
+
+> [!warning]
+>
+> Este proyecto usa variables de entorno. Solicitar a su autor.
