@@ -8,17 +8,17 @@ const Cart = ({ cart, deleteProductById, totalQuantity, total, clearCart }) => {
   return (
     <div className="mx-auto my-3">
       {total > 0 ? (
-        <div className="flex flex-col-reverse lg:flex-row lg:space-x-6 justify-evenly lg:items-start">
+        <div className="flex flex-col lg:flex-row lg:space-x-6 justify-evenly lg:items-start">
           {/* Acciones del carrito */}
           <div className="lg:order-last lg:w-1/2 my-4 lg:my-0 flex flex-col items-center">
             <h2 className="lg:text-2xl font-semibold mb-3 text-center">
               Acciones del carrito
             </h2>
-            <div className="flex flex-col items-center">
-              <Link to="/checkout" className="btn btn-success mb-4">
+            <div className="flex flex-row items-center">
+              <Link to="/checkout" className="btn btn-success mb-4 mx-2">
                 Pagar
               </Link>
-              <button className="btn btn-warning mb-5" onClick={clearCart}>
+              <button className="btn btn-warning mb-4" onClick={clearCart}>
                 Vaciar Carrito
               </button>
             </div>
