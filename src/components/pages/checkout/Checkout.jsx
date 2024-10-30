@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import { useForm } from "react-hook-form";
 import { CartContext } from "../../../context/CartContext";
 import { addDoc, collection, updateDoc, doc } from "firebase/firestore";
 import { db } from "../../../configFirebase";
@@ -9,12 +10,11 @@ import { useAlert } from "../../../context/AlertContext.jsx";
 import LoadingPage from "../loadingPage/LoadingPage.jsx";
 
 const Checkout = () => {
-  const [user, setUser] = useState({
-    name: "",
-    phone: "",
-    email: "",
-  });
-
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
   const { currentKannel } = useContext(LogoContext);
   const { cart, getTotalAmount, clearCart } = useContext(CartContext);
   const [orderId, setOrderId] = useState(null);
@@ -23,17 +23,15 @@ const Checkout = () => {
 
   let total = getTotalAmount();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const onSubmit = (data) => {
     setIsLoading(true);
-    let total = getTotalAmount();
 
     const order = {
-      buyer: user,
+      buyer: data,
       items: cart,
       total: total,
     };
-    //guardar la orden en firebase
+
     let refCollection = collection(db, "orders");
     addDoc(refCollection, order)
       .then((res) => {
@@ -52,15 +50,8 @@ const Checkout = () => {
     });
   };
 
-  const handleChange = (e) => {
-    const { value, name } = e.target;
-    setUser({ ...user, [name]: value });
-  };
-
-  {
-    if (isLoading) {
-      return <LoadingPage />;
-    }
+  if (isLoading) {
+    return <LoadingPage />;
   }
 
   return (
@@ -75,9 +66,6 @@ const Checkout = () => {
           <h2 className="text-xl lg:text-2xl text-center my-2">
             Gracias por tu compra:
           </h2>
-          <p className="text-xl lg:text-2xl text-center my-2">
-            Click para copiar el número de compra
-          </p>
           <CopyToClipboard text={orderId}>
             <p
               onClick={() => showAlert("Orden Copiada", "success")}
@@ -90,39 +78,55 @@ const Checkout = () => {
       ) : (
         <div className="justify-center mx-2 my-2">
           <div className="card bg-base-200 shadow-xl lg:w-2/4 xl:w-1/4 p-2 mx-1 justify-self-center">
-            <div className="card-title mb-1">
-              <h2>Proceso de compra</h2>
-            </div>
-            <form onSubmit={handleSubmit}>
+            <h2 className="card-title mb-1">Proceso de compra</h2>
+            <form onSubmit={handleSubmit(onSubmit)}>
               <label className="input input-bordered flex items-center gap-2 my-1">
                 <input
                   type="text"
                   placeholder="Nombre"
-                  onChange={handleChange}
-                  name="name"
-                  required
+                  {...register("name", {
+                    required: "El nombre es obligatorio",
+                    maxLength: { value: 50, message: "Máximo 50 caracteres" },
+                    pattern: {
+                      value: /^[A-Za-zÁÉÍÓÚáéíóúñÑ\s]+$/,
+                      message: "Solo letras y espacios",
+                    },
+                  })}
                 />
+                {errors.name && <span>{errors.name.message}</span>}
               </label>
+
               <label className="input input-bordered flex items-center gap-2 my-1">
                 <input
-                  type="text"
+                  type="tel"
                   placeholder="Teléfono"
-                  onChange={handleChange}
-                  name="phone"
-                  required
+                  {...register("phone", {
+                    required: "El teléfono es obligatorio",
+                    pattern: { value: /^[0-9]+$/, message: "Solo números" },
+                  })}
                 />
+                {errors.phone && <span>{errors.phone.message}</span>}
               </label>
+
               <label className="input input-bordered flex items-center gap-2 mb-2">
                 <input
-                  type="text"
+                  type="email"
                   placeholder="Email"
-                  onChange={handleChange}
-                  name="email"
-                  required
+                  {...register("email", {
+                    required: "El email es obligatorio",
+                    pattern: {
+                      value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                      message: "Formato de email inválido",
+                    },
+                  })}
                 />
+                {errors.email && <span>{errors.email.message}</span>}
               </label>
+
               <div className="card-actions justify-end">
-                <button className="btn btn-primary">Comprar</button>
+                <button type="submit" className="btn btn-primary">
+                  Comprar
+                </button>
               </div>
             </form>
           </div>
