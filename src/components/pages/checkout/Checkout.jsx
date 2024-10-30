@@ -3,10 +3,10 @@ import { CartContext } from "../../../context/CartContext";
 import { addDoc, collection, updateDoc, doc } from "firebase/firestore";
 import { db } from "../../../configFirebase";
 import { LogoContext } from "../../../context/LogoContext.jsx";
-import Loader from "../../common/loader/Loader.jsx";
 import { Link } from "react-router-dom";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { useAlert } from "../../../context/AlertContext.jsx";
+import LoadingPage from "../loadingPage/LoadingPage.jsx";
 
 const Checkout = () => {
   const [user, setUser] = useState({
@@ -27,6 +27,7 @@ const Checkout = () => {
     e.preventDefault();
     setIsLoading(true);
     let total = getTotalAmount();
+
     const order = {
       buyer: user,
       items: cart,
@@ -58,21 +59,14 @@ const Checkout = () => {
 
   {
     if (isLoading) {
-      return (
-        <div className="flex h-dvh justify-center">
-          <p className="text-xl lg:text-2xl text-center">Procesando</p>
-          <p className="text-xl lg:text-2xl text-center">
-            <Loader />
-          </p>
-        </div>
-      );
+      return <LoadingPage />;
     }
   }
 
   return (
     <div className="h-dvh grid grid-cols-1">
       {orderId ? (
-        <div className="justify-center my-2">
+        <div className="justify-center my-4">
           <div className="justify-self-center">
             <Link to="/" className="btn btn-link">
               <img src={currentKannel} alt="logo Kannel" className="h-96" />
@@ -82,7 +76,7 @@ const Checkout = () => {
             Gracias por tu compra:
           </h2>
           <p className="text-xl lg:text-2xl text-center my-2">
-            Copia tu orden de compra
+            Click para copiar el número de compra
           </p>
           <CopyToClipboard text={orderId}>
             <p
@@ -95,7 +89,7 @@ const Checkout = () => {
         </div>
       ) : (
         <div className="justify-center mx-2 my-2">
-          <div className="card bg-base-200 shadow-xl p-2 mx-1">
+          <div className="card bg-base-200 shadow-xl lg:w-2/4 xl:w-1/4 p-2 mx-1 justify-self-center">
             <div className="card-title mb-1">
               <h2>Proceso de compra</h2>
             </div>
@@ -106,6 +100,7 @@ const Checkout = () => {
                   placeholder="Nombre"
                   onChange={handleChange}
                   name="name"
+                  required
                 />
               </label>
               <label className="input input-bordered flex items-center gap-2 my-1">
@@ -114,6 +109,7 @@ const Checkout = () => {
                   placeholder="Teléfono"
                   onChange={handleChange}
                   name="phone"
+                  required
                 />
               </label>
               <label className="input input-bordered flex items-center gap-2 mb-2">
@@ -122,6 +118,7 @@ const Checkout = () => {
                   placeholder="Email"
                   onChange={handleChange}
                   name="email"
+                  required
                 />
               </label>
               <div className="card-actions justify-end">
@@ -129,9 +126,9 @@ const Checkout = () => {
               </div>
             </form>
           </div>
-          <div className="w-72 h-2/5 lg:w-1/2 overflow-auto mx-auto my-2">
+          <div className="w-72 h-2/5 lg:w-2/4 xl:w-1/4 overflow-auto mx-auto my-2">
             <h2 className="lg:text-2xl font-semibold text-center mb-3">
-              Total de tu compra : {total}
+              Total de tu compra : ${total}
             </h2>
             {cart.map((product) => (
               <div

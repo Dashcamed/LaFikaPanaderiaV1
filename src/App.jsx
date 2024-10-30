@@ -29,7 +29,7 @@ function App() {
               />
               <Route path={"/Cart"} element={<CartContainer />} />
               <Route path={"*"} element={<Page404 />} />
-              <Route path={"/checkout"} element={<Checkout />} />
+              <Route path={"/Checkout"} element={<Checkout />} />
             </Routes>
             <Footer />
           </LogoContextProvider>
