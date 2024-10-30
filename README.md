@@ -2,8 +2,10 @@
 
 E-commerce app para la panaderia La Fika en Santiago de Chile.
 
-Version de node para levantar el proyecto:
-v20.12.1
+> [!warning]
+>
+> Version de node para levantar el proyecto:
+> v20.12.1
 
 ## Bibliotecas usadas en el desarrollo
 
