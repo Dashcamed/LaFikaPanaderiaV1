@@ -66,6 +66,9 @@ const Checkout = () => {
           <h2 className="text-xl lg:text-2xl text-center my-2">
             Gracias por tu compra:
           </h2>
+          <p className="text-xl lg:text-2xl text-center my-2">
+            Has click para copiar tu orden.
+          </p>
           <CopyToClipboard text={orderId}>
             <p
               onClick={() => showAlert("Orden Copiada", "success")}

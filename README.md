@@ -1,6 +1,6 @@
 # Proyecto Final de React
 
-E-commerce app para la panaderia La Fika en Santiago de Chile. 
+E-commerce app para la panaderia La Fika en Santiago de Chile.
 
 Version de node para levantar el proyecto:
 v20.12.1
@@ -12,6 +12,8 @@ v20.12.1
 🌼 [DaisyUi](https://daisyui.com/ "daisyui")
 
 🧪 [React](https://es.react.dev/ "React")
+
+📓[React-hook-form](https://www.react-hook-form.com/ "React-hook-form")
 
 ## Compilador
 
