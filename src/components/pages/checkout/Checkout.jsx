@@ -61,7 +61,9 @@ const Checkout = () => {
       return (
         <div className="flex h-dvh justify-center">
           <p className="text-xl lg:text-2xl text-center">Procesando</p>
-          <Loader />
+          <p className="text-xl lg:text-2xl text-center">
+            <Loader />
+          </p>
         </div>
       );
     }
