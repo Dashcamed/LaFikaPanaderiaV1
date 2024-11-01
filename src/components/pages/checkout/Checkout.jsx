@@ -32,6 +32,12 @@ const Checkout = () => {
       total: total,
     };
 
+    if (!order.items || order.items.length === 0 || !order.total) {
+      showAlert("La orden no tiene artículos o el total es inválido", "error");
+      setIsLoading(false);
+      return;
+    }
+
     let refCollection = collection(db, "orders");
     addDoc(refCollection, order)
       .then((res) => {

@@ -73,15 +73,15 @@ const Cart = ({ cart, deleteProductById, totalQuantity, total, clearCart }) => {
         </div>
       ) : (
         // Cuando no hay productos en el carrito
-        <div className="flex h-dvh flex-col items-center text-center mx-auto">
+        <div className="flex h-dvh flex-col items-center text-center py-3 mx-auto">
           <div>
             <Link to="/" className="btn btn-link">
               <img src={currentKannel} alt="logo Kannel" className="h-96" />
             </Link>
           </div>
-          <div>
+          <div className="mx-3">
             <h2 className="lg:text-2xl font-semibold mb-3">
-              Toca a Kannel para buscar productos
+              ¡Carrito vacio! Toca a Kannel para buscar productos
             </h2>
           </div>
         </div>
